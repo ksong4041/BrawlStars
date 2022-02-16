@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\LeftJoystickController.cs" />
+    <Compile Include="Assets\Script\RightJoystickController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -86,13 +86,13 @@ public class LeftJoystickController : MonoBehaviour
                 // 조이스틱의 스틱 방향을 받아옴
                 Direction = LeftFiledStick.localPosition.normalized;
 
-                // Ratio = 비율 & sqrMagnitude = 거리 비교용 float 반환값
+                // Ratio = 비율 & sqrMagnitude = 거리 비교용 float 반환값 ( 조이스틱 상의 드래그 비율 => 속도 변환의 이유 )
                 float Ratio = (LeftBackBoard.position - LeftFiledStick.position).sqrMagnitude / (Radius * Radius);
-
-                Rotation = new Vector3(0.0f, Direction.y * 90, 0.0f);
 
                 // 평면 상의 좌표값을 공간 벡터로 변형 및 속도값 추가
                 Movement = new Vector3(Direction.x * Speed * Ratio * Time.deltaTime, 0.0f, Direction.y * Speed * Ratio * Time.deltaTime);
+
+                Rotation = Direction.normalized;
             }
         }
 
@@ -111,7 +111,8 @@ public class LeftJoystickController : MonoBehaviour
         {
             // 타겟 이동
             Character.position += Movement;
-            Character.rotation = Quaternion.Euler(Rotation);
+            // 타겟 회전
+            Character.localRotation = Quaternion.Euler(new Vector3(0.0f, Mathf.Atan2(Rotation.x, Rotation.y) * Mathf.Rad2Deg, 0.0f));
         }
     }
 }
