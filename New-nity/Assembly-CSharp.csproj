@@ -53,6 +53,7 @@
     <UnityVersion>2019.4.34f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\JoyStickController.cs" />
     <Compile Include="Assets\Script\LeftJoystickController.cs" />
     <Compile Include="Assets\Script\RightJoystickController.cs" />
     <Compile Include="Assets\Script\SceneChange.cs" />
